@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Shared;
 
 namespace day2 {
 	class Program {
@@ -55,26 +56,6 @@ namespace day2 {
 				return new Vector3Int(0, 0, value);
 			} else {
 				return new Vector3Int(0, 0, -value);
-			}
-		}
-
-		private struct Vector3Int {
-			public int x;
-			public int y;
-			public int z;
-
-			public Vector3Int(int x, int y, int z) {
-				this.x = x;
-				this.y = y;
-				this.z = z;
-			}
-
-			public Vector3Int Add(Vector3Int other) {
-				return new Vector3Int(this.x + other.x, this.y + other.y, this.z + other.z);
-			}
-
-			public override string ToString() {
-				return $"({x}, {y}, {z})";
 			}
 		}
 	}

@@ -1,3 +1,5 @@
+using Shared;
+
 namespace day5 {
 	public struct LineSegment {
 		private const string VALUE_SEPARATOR = " -> ";

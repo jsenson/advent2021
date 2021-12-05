@@ -1,6 +1,6 @@
 using System;
 
-namespace day5 {
+namespace Shared {
 	public struct Vector3Int {
 		public int x;
 		public int y;

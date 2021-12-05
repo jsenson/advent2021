@@ -1,5 +1,6 @@
 using System;
 using System.Text;
+using Shared;
 
 namespace day5 {
 	public class HeatMap {
