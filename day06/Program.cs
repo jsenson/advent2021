@@ -1,5 +1,5 @@
 ﻿using System;
-using System.IO;
+using Shared;
 
 namespace day6 {
 	class Program {
@@ -8,7 +8,7 @@ namespace day6 {
 		private const int RESET_AGE = 6;
 
 		static void Main(string[] args) {
-			string[] inputStrings = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), INPUT)).Split(',', StringSplitOptions.RemoveEmptyEntries);
+			string[] inputStrings = InputParser.ParseRaw(InputParser.INPUT, InputParser.COMMA);
 			long[] part1Input = new long[MAX_AGE + 1];
 			for(int i = 0; i < inputStrings.Length; i++) {
 				int age = Convert.ToInt32(inputStrings[i]);

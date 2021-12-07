@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using Shared;
 
 namespace day4 {
 	class Program {
-		private const string INPUT = "input.txt";
-
 		static void Main(string[] args) {
-			string[] lines = File.ReadAllLines(Path.Combine(Directory.GetCurrentDirectory(), INPUT));
+			string[] lines = InputParser.ParseRaw(InputParser.INPUT, InputParser.NEWLINE);
 			int[] inputs = GetInputs(lines[0]);
 
 			int boardStart = 2;

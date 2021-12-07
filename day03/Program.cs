@@ -1,18 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using Shared;
 
 namespace day3 {
 	class Program {
-		private const string INPUT = "input.txt";
-
 		static void Main(string[] args) {
-			string[] lines = File.ReadAllLines(Path.Combine(Directory.GetCurrentDirectory(), INPUT));
-			int[] input = new int[lines.Length];
-			for (int i = 0; i < lines.Length; i++) {
-				input[i] = Convert.ToInt32(lines[i], 2);
-			}
-
+			int[] input = InputParser.ParseToInts(InputParser.INPUT, InputParser.NEWLINE);
 			Part1(input, 12);
 			Console.WriteLine();
 			Part2(input, 12);

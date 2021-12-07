@@ -8,6 +8,10 @@ namespace Shared {
 		public const string COMMA = ",";
 		public const string NEWLINE = "\n";
 
+		public static string[] ParseRaw(string fileName, string separator) {
+			return File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), fileName)).Split(separator, StringSplitOptions.RemoveEmptyEntries);
+		}
+
 		public static int[] ParseToInts(string fileName, string separator) {
 			return ParseToArray<int>(fileName, separator, entry => Convert.ToInt32(entry));
 		}

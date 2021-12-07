@@ -1,17 +1,10 @@
 ﻿using System;
-using System.IO;
+using Shared;
 
 namespace day1 {
 	class Program {
-		private const string INPUT = "input.txt";
-
 		static void Main(string[] args) {
-			string[] lines = File.ReadAllLines(Path.Combine(Directory.GetCurrentDirectory(), INPUT));
-			int[] numbers = new int[lines.Length];
-			for (int i = 0; i < lines.Length; i++) {
-				numbers[i] = Convert.ToInt32(lines[i]);
-			}
-
+			int[] numbers = InputParser.ParseToInts(InputParser.INPUT, InputParser.NEWLINE);
 			Part1(numbers);
 			Part2(numbers);
 		}

@@ -1,17 +1,10 @@
 ﻿using System;
-using System.IO;
+using Shared;
 
 namespace day5 {
 	class Program {
-		private const string INPUT = "input.txt";
-
 		static void Main(string[] args) {
-			string[] lines = File.ReadAllLines(Path.Combine(Directory.GetCurrentDirectory(), INPUT));
-			LineSegment[] segments = new LineSegment[lines.Length];
-			for(int i = 0; i < lines.Length; i++) {
-				segments[i] = new LineSegment(lines[i]);
-			}
-
+			LineSegment[] segments = InputParser.ParseToArray<LineSegment>(InputParser.INPUT, InputParser.NEWLINE, entry => new LineSegment(entry));
 			Part1(segments);
 			Console.WriteLine();
 			Part2(segments);

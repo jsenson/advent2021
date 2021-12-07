@@ -1,13 +1,10 @@
 ﻿using System;
-using System.IO;
 using Shared;
 
 namespace day2 {
 	class Program {
-		private const string INPUT = "input.txt";
-
 		static void Main(string[] args) {
-			string[] lines = File.ReadAllLines(Path.Combine(Directory.GetCurrentDirectory(), INPUT));
+			string[] lines = InputParser.ParseRaw(InputParser.INPUT, InputParser.NEWLINE);
 			Part1(lines);
 			Console.WriteLine();
 			Part2(lines);
