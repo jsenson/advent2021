@@ -6,7 +6,7 @@ namespace Shared {
 		public const string INPUT = "input.txt";
 		public const string DEBUG = "debuginput.txt";
 		public const string COMMA = ",";
-		public const string NEWLINE = "\n";
+		public const string NEWLINE = "\r\n";
 
 		public static string[] ParseRaw(string fileName, string separator) {
 			return File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), fileName)).Split(separator, StringSplitOptions.RemoveEmptyEntries);
