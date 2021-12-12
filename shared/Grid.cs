@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace Shared {
 	public class Grid<T> {
 		public int Width { get; private set; }
@@ -15,15 +17,26 @@ namespace Shared {
 					_nodes[GetIndex(x, y)] = node;
 
 					if (x > 0) {
-						Node left = _nodes[GetIndex(x - 1, y)];
-						node.Neighbours[(int)Node.Direction.West] = left;
-						left.Neighbours[(int)Node.Direction.East] = node;
+						Node west = _nodes[GetIndex(x - 1, y)];
+						node.Neighbours[(int)Node.Direction.West] = west;
+						west.Neighbours[(int)Node.Direction.East] = node;
+						if (y > 0) {
+							Node sw = _nodes[GetIndex(x - 1, y - 1)];
+							node.Neighbours[(int)Node.Direction.SouthWest] = sw;
+							sw.Neighbours[(int)Node.Direction.NorthEast] = node;
+						}
+
+						if (y < Height - 1) {
+							Node nw = _nodes[GetIndex(x - 1, y + 1)];
+							node.Neighbours[(int)Node.Direction.NorthWest] = nw;
+							nw.Neighbours[(int)Node.Direction.SouthEast] = node;
+						}
 					}
 
 					if (y > 0) {
-						Node down = _nodes[GetIndex(x, y - 1)];
-						node.Neighbours[(int)Node.Direction.South] = down;
-						down.Neighbours[(int)Node.Direction.North] = node;
+						Node south = _nodes[GetIndex(x, y - 1)];
+						node.Neighbours[(int)Node.Direction.South] = south;
+						south.Neighbours[(int)Node.Direction.North] = node;
 					}
 				}
 			}
@@ -33,6 +46,30 @@ namespace Shared {
 			return _nodes[GetIndex(x, y)];
 		}
 
+		public Grid<T> Clone() {
+			var clone = new Grid<T>(Width, Height);
+			for (int i = 0; i < _nodes.Length; i++) {
+				clone._nodes[i].Value = _nodes[i].Value;
+			}
+
+			return clone;
+		}
+
+		public override string ToString() {
+			StringBuilder sb = new StringBuilder();
+			StringBuilder lineBuilder = new StringBuilder();
+			for (int y = 0; y < Height; y++) {
+				lineBuilder.Clear();
+				for (int x = 0; x < Width; x++) {
+					lineBuilder.Append(Get(x, y).Value.ToString());
+				}
+
+				sb.AppendLine(lineBuilder.ToString());
+			}
+
+			return sb.ToString();
+		}
+
 		private int GetIndex(int x, int y) {
 			return y * Width + x;
 		}
@@ -40,9 +77,13 @@ namespace Shared {
 		public class Node {
 			public enum Direction {
 				North,
+				NorthEast,
 				East,
+				SouthEast,
 				South,
+				SouthWest,
 				West,
+				NorthWest,
 				_Count
 			}
 
