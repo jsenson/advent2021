@@ -6,6 +6,10 @@ namespace Shared {
 		public int y;
 		public int z;
 
+		public double Magnitude => Math.Sqrt(x * x + y * y + z * z);
+
+		public int SqrMagnitude => x * x + y * y + z * z;
+
 		public Vector3Int(int x, int y, int z) {
 			this.x = x;
 			this.y = y;
@@ -21,6 +25,10 @@ namespace Shared {
 
 		public Vector3Int Add(Vector3Int other) {
 			return new Vector3Int(this.x + other.x, this.y + other.y, this.z + other.z);
+		}
+
+		public Vector3Int Subtract(Vector3Int other) {
+			return new Vector3Int(this.x - other.x, this.y - other.y, this.z - other.z);
 		}
 
 		public static bool operator ==(Vector3Int a, Vector3Int b) {

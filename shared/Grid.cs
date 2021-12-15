@@ -87,12 +87,12 @@ namespace Shared {
 				_Count
 			}
 
-			public Vector3Int Position;
+			public Vector2Int Position;
 			public T Value;
 			public Node[] Neighbours;
 
 			public Node(int x, int y) {
-				Position = new Vector3Int(x, y, 0);
+				Position = new Vector2Int(x, y);
 				Value = default(T);
 				Neighbours = new Node[(int)Direction._Count];
 			}
